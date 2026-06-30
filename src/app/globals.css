@@ -1,26 +1,26 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+@theme {
+  /* Cores base utilizando o Slate */
+  --color-background: var(--color-slate-50);
+  --color-foreground: var(--color-slate-950);
+  
+  --color-card: #ffffff;
+  --color-card-foreground: var(--color-slate-950);
+  
+  --color-primary: var(--color-slate-900);
+  --color-primary-foreground: var(--color-slate-50);
+  
+  --color-muted: var(--color-slate-100);
+  --color-muted-foreground: var(--color-slate-500);
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+  /* Cores de acento para contextos financeiros */
+  --color-success: var(--color-emerald-600);
+  --color-warning: var(--color-amber-500);
+  --color-danger: var(--color-rose-600);
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  /* Primitivos de borda para o shadcn/ui */
+  --radius-lg: 0.5rem;
+  --radius-md: calc(0.5rem - 2px);
+  --radius-sm: calc(0.5rem - 4px);
 }

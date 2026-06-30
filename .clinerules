@@ -1,0 +1,21 @@
+# IRRF App - Project Rules & Context
+
+## Project Mission & UX Focus
+- **Purpose:** An educational, informative, and highly accessible tax guide app to help users understand, calculate, and declare IRRF independently.
+- **Tone & UI:** Break down complex financial terms (e.g., "Dedução Legal" / Legal Deduction, "Base de Cálculo" / Calculation Base) using simple language and contextual helpers like Tooltips or HoverCards from shadcn/ui.
+- **Architecture Constraints:** 100% Client-Side processing. No database, no user registration, and no login screens. Calculations must happen in real-time as the user types.
+
+## Tech Stack & Tooling Constraints
+- **Framework:** Next.js 15+ (App Router).
+- **Styling:** Strict Tailwind CSS v4. DO NOT create, modify, or look for a `tailwind.config.js` or `tailwind.config.ts`. All custom themes, variables, and color palettes must be managed inside the global CSS file (`src/app/globals.css`) using the `@theme` directive.
+- **Validation:** Use Zod schemas exclusively for input sanitization and form validation before triggering calculations.
+
+## Architectural Patterns
+- **Business Logic Isolation:** All IRRF calculation logic (progressive tables, deductions, exemptions) must be decoupled from UI components.
+- **Design Pattern:** Implement the **Strategy Pattern** using pure TypeScript functions (`.ts`) for each type of calculation rule or tax-year scenario. Use a simple Factory if needed to instantiate the correct strategy.
+- **Testing:** 100% unit test coverage using **Vitest** for the calculation engine. Always ensure test suites pass and extreme edge cases (zero values, negative numbers, income bracket thresholds) are covered via CI.
+
+## AI Communication & Learning Protocol
+- **Language:** All explanations, thoughts, and conversational responses to the user MUST be written in Portuguese.
+- **Code Explanations:** After every implementation, provide a concise, high-impact breakdown of the code generated. Focus on *why* it was built that way, not just *what* it does.
+- **Efficiency Constraint:** Keep explanations to a maximum of 3-4 bullet points. Do not write extensive paragraphs. The user wants to learn and study the architecture effectively without slowing down the development momentum.

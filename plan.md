@@ -21,8 +21,8 @@ Este documento serve como o mapa de etapas para o desenvolvimento do IRRF App. O
 
 ### Bloco 2: Engenharia de Interface & Layout (UI/UX)
 **Objetivo:** Construir toda a experiência visual do usuário e os formulários de captação de dados, utilizando dados mockados (fictícios) para os resultados.
-- [ ] **Tarefa 2.1:** Criar a estrutura da página principal com cabeçalho educativo, explicando de forma simples o propósito do app.
-- [ ] **Tarefa 2.2:** Desenvolver uma interface guiada em etapas (**Wizard Interface**) para os inputs do usuário usando *React Hook Form* e *Zod*, dividida em:
+- [x] **Tarefa 2.1:** Criar a estrutura da página principal com cabeçalho educativo, explicando de forma simples o propósito do app.
+- [x] **Tarefa 2.2:** Desenvolver uma interface guiada em etapas (**Wizard Interface**) para os inputs do usuário usando *React Hook Form* e *Zod*, dividida em:
   - *Etapa 1 (Ganhos):* Inputs para Salário Bruto, Aluguéis e outras fontes.
   - *Etapa 2 (Gastos/Deduções):* Inputs para Previdência Oficial, Dependentes, Pensão Alimentícia, Saúde e Educação.
   - *Etapa 3 (Resultado):* Painel de resposta rápida com gráficos ou resumos visuais.

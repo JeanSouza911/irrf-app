@@ -14,7 +14,8 @@ import {
   CardContent,
   CardFooter,
 } from "@/components/ui/card";
-import { Coins, PiggyBank, Receipt, ArrowLeft, ArrowRight, RotateCcw } from "lucide-react";
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
+import { Coins, PiggyBank, Receipt, ArrowLeft, ArrowRight, RotateCcw, Info } from "lucide-react";
 
 type Step = 1 | 2 | 3;
 
@@ -142,10 +143,21 @@ export default function WizardForm() {
             </CardHeader>
             <CardContent className="space-y-4">
               <div className="space-y-2">
-                <label htmlFor="salarioBruto" className="text-sm font-semibold text-slate-700 flex justify-between">
-                  <span>Salário Bruto Mensal / Anual</span>
-                  <span className="text-xs text-slate-500">Rendimento Principal</span>
-                </label>
+                <div className="flex items-center justify-between">
+                  <label htmlFor="salarioBruto" className="text-sm font-semibold text-slate-700">
+                    Salário Bruto Mensal / Anual
+                  </label>
+                  <TooltipProvider>
+                    <Tooltip>
+                      <TooltipTrigger asChild>
+                        <Info className="w-4 h-4 text-slate-400 cursor-help" />
+                      </TooltipTrigger>
+                      <TooltipContent>
+                        <p>Informe o total de rendimentos, incluindo salário, pró-labore e outras remunerações.</p>
+                      </TooltipContent>
+                    </Tooltip>
+                  </TooltipProvider>
+                </div>
                 <div className="relative">
                   <span className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-sm font-medium">R$</span>
                   <Input
@@ -164,9 +176,21 @@ export default function WizardForm() {
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div className="space-y-2">
-                  <label htmlFor="alugueis" className="text-sm font-semibold text-slate-700">
-                    Aluguéis Recebidos
-                  </label>
+                  <div className="flex items-center justify-between">
+                    <label htmlFor="alugueis" className="text-sm font-semibold text-slate-700">
+                      Aluguéis Recebidos
+                    </label>
+                    <TooltipProvider>
+                      <Tooltip>
+                        <TooltipTrigger asChild>
+                          <Info className="w-4 h-4 text-slate-400 cursor-help" />
+                        </TooltipTrigger>
+                        <TooltipContent>
+                          <p>Declare os valores de aluguéis recebidos de pessoas físicas ou jurídicas.</p>
+                        </TooltipContent>
+                      </Tooltip>
+                    </TooltipProvider>
+                  </div>
                   <div className="relative">
                     <span className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-sm font-medium">R$</span>
                     <Input
@@ -184,9 +208,21 @@ export default function WizardForm() {
                 </div>
 
                 <div className="space-y-2">
-                  <label htmlFor="outrosGanhos" className="text-sm font-semibold text-slate-700">
-                    Outros Ganhos Tributáveis
-                  </label>
+                  <div className="flex items-center justify-between">
+                    <label htmlFor="outrosGanhos" className="text-sm font-semibold text-slate-700">
+                      Outros Ganhos Tributáveis
+                    </label>
+                    <TooltipProvider>
+                      <Tooltip>
+                        <TooltipTrigger asChild>
+                          <Info className="w-4 h-4 text-slate-400 cursor-help" />
+                        </TooltipTrigger>
+                        <TooltipContent>
+                          <p>Inclua aqui outras rendas tributáveis, como trabalho autônomo, MEI, ou rendimentos do exterior.</p>
+                        </TooltipContent>
+                      </Tooltip>
+                    </TooltipProvider>
+                  </div>
                   <div className="relative">
                     <span className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-sm font-medium">R$</span>
                     <Input
@@ -226,9 +262,21 @@ export default function WizardForm() {
             <CardContent className="space-y-4">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div className="space-y-2">
-                  <label htmlFor="previdenciaOficial" className="text-sm font-semibold text-slate-700">
-                    Previdência Oficial (INSS)
-                  </label>
+                  <div className="flex items-center justify-between">
+                    <label htmlFor="previdenciaOficial" className="text-sm font-semibold text-slate-700">
+                      Previdência Oficial (INSS)
+                    </label>
+                    <TooltipProvider>
+                      <Tooltip>
+                        <TooltipTrigger asChild>
+                          <Info className="w-4 h-4 text-slate-400 cursor-help" />
+                        </TooltipTrigger>
+                        <TooltipContent>
+                          <p>Valores pagos à Previdência Social ou a regimes próprios de previdência.</p>
+                        </TooltipContent>
+                      </Tooltip>
+                    </TooltipProvider>
+                  </div>
                   <div className="relative">
                     <span className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-sm font-medium">R$</span>
                     <Input
@@ -246,9 +294,21 @@ export default function WizardForm() {
                 </div>
 
                 <div className="space-y-2">
-                  <label htmlFor="dependentes" className="text-sm font-semibold text-slate-700">
-                    Número de Dependentes
-                  </label>
+                  <div className="flex items-center justify-between">
+                    <label htmlFor="dependentes" className="text-sm font-semibold text-slate-700">
+                      Número de Dependentes
+                    </label>
+                    <TooltipProvider>
+                      <Tooltip>
+                        <TooltipTrigger asChild>
+                          <Info className="w-4 h-4 text-slate-400 cursor-help" />
+                        </TooltipTrigger>
+                        <TooltipContent>
+                          <p>Cada dependente permite uma dedução anual específica.</p>
+                        </TooltipContent>
+                      </Tooltip>
+                    </TooltipProvider>
+                  </div>
                   <Input
                     id="dependentes"
                     type="number"
@@ -262,9 +322,21 @@ export default function WizardForm() {
               </div>
 
               <div className="space-y-2">
-                <label htmlFor="pensaoAlimenticia" className="text-sm font-semibold text-slate-700">
-                  Pensão Alimentícia Paga
-                </label>
+                <div className="flex items-center justify-between">
+                  <label htmlFor="pensaoAlimenticia" className="text-sm font-semibold text-slate-700">
+                    Pensão Alimentícia Paga
+                  </label>
+                  <TooltipProvider>
+                    <Tooltip>
+                      <TooltipTrigger asChild>
+                        <Info className="w-4 h-4 text-slate-400 cursor-help" />
+                      </TooltipTrigger>
+                      <TooltipContent>
+                        <p>Valores de pensão alimentícia judicialmente homologada.</p>
+                      </TooltipContent>
+                    </Tooltip>
+                  </TooltipProvider>
+                </div>
                 <div className="relative">
                   <span className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-sm font-medium">R$</span>
                   <Input
@@ -283,9 +355,21 @@ export default function WizardForm() {
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div className="space-y-2">
-                  <label htmlFor="saude" className="text-sm font-semibold text-slate-700">
-                    Despesas Médicas / Saúde
-                  </label>
+                  <div className="flex items-center justify-between">
+                    <label htmlFor="saude" className="text-sm font-semibold text-slate-700">
+                      Despesas Médicas / Saúde
+                    </label>
+                    <TooltipProvider>
+                      <Tooltip>
+                        <TooltipTrigger asChild>
+                          <Info className="w-4 h-4 text-slate-400 cursor-help" />
+                        </TooltipTrigger>
+                        <TooltipContent>
+                          <p>Gastos com médicos, dentistas, psicólogos e hospitais.</p>
+                        </TooltipContent>
+                      </Tooltip>
+                    </TooltipProvider>
+                  </div>
                   <div className="relative">
                     <span className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-sm font-medium">R$</span>
                     <Input
@@ -303,9 +387,21 @@ export default function WizardForm() {
                 </div>
 
                 <div className="space-y-2">
-                  <label htmlFor="educacao" className="text-sm font-semibold text-slate-700">
-                    Despesas com Educação
-                  </label>
+                  <div className="flex items-center justify-between">
+                    <label htmlFor="educacao" className="text-sm font-semibold text-slate-700">
+                      Despesas com Educação
+                    </label>
+                    <TooltipProvider>
+                      <Tooltip>
+                        <TooltipTrigger asChild>
+                          <Info className="w-4 h-4 text-slate-400 cursor-help" />
+                        </TooltipTrigger>
+                        <TooltipContent>
+                          <p>Gastos com ensino infantil, fundamental, médio, superior, pós-graduação e cursos técnicos.</p>
+                        </TooltipContent>
+                      </Tooltip>
+                    </TooltipProvider>
+                  </div>
                   <div className="relative">
                     <span className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-sm font-medium">R$</span>
                     <Input
@@ -387,6 +483,31 @@ export default function WizardForm() {
                     </span>
                   </div>
                 </div>
+              </div>
+
+              {/* Guia Teórico Explicativo - Mockup */}
+              <div className="p-4 bg-white rounded-xl border border-slate-200 shadow-sm space-y-3 text-sm text-slate-700">
+                <h3 className="font-semibold text-slate-800 flex items-center gap-2">
+                  <Info className="w-4 h-4 text-blue-600" /> Guia Teórico: Entenda Seu IRRF
+                </h3>
+                <p className="text-xs text-slate-500">Este guia é um mockup e será preenchido com conteúdo real nas próximas etapas.</p>
+                <ul className="list-disc list-inside space-y-1 pl-2">
+                  <li>
+                    <strong>Rendimento Total:</strong> Soma de todas as suas fontes de receita tributáveis.
+                  </li>
+                  <li>
+                    <strong>Deduções Legais:</strong> Gastos que a Receita Federal permite abater para diminuir a base de cálculo do imposto.
+                  </li>
+                  <li>
+                    <strong>Base de Cálculo:</strong> É o valor sobre o qual o imposto é efetivamente calculado, após as deduções.
+                  </li>
+                  <li>
+                    <strong>Alíquota Efetiva:</strong> A porcentagem real de imposto que você paga sobre o seu rendimento total, considerando as faixas e deduções.
+                  </li>
+                  <li>
+                    <strong>Faixas de Imposto:</strong> As tabelas progressivas da Receita Federal que definem diferentes alíquotas de imposto para diferentes níveis de renda.
+                  </li>
+                </ul>
               </div>
             </CardContent>
             <CardFooter className="flex justify-between pt-4 border-t border-slate-100 bg-white rounded-b-xl">

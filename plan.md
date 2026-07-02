@@ -4,8 +4,8 @@ Este documento serve como o mapa de etapas para o desenvolvimento do IRRF App. O
 
 ## 📊 Progresso Geral
 - [x] Bloco 1: Inicialização do Ambiente e Design System Base
-- [ ] Bloco 2: Engenharia de Interface & Layout (UI/UX)
-- [ ] Bloco 3: Engenharia de Testes & Pipeline de CI
+- [x] Bloco 2: Engenharia de Interface & Layout (UI/UX)
+- [x] Bloco 3: Engenharia de Testes & Pipeline de CI
 - [ ] Bloco 4: Engenharia de Negócio (Lógica & Motor de Cálculo)
 - [ ] Bloco 5: Conexão Final & Ajustes de Acessibilidade
 
@@ -31,10 +31,10 @@ Este documento serve como o mapa de etapas para o desenvolvimento do IRRF App. O
 
 ### Bloco 3: Engenharia de Testes & Pipeline de CI
 **Objetivo:** Isolar o ecossistema de testes com Vitest e configurar a esteira de automação do GitHub Actions antes de escrever a lógica matemática.
-- [ ] **Tarefa 3.1:** Instalar e configurar o Vitest (`vitest.config.ts`) integrado ao ambiente TypeScript do Next.js.
-- [ ] **Tarefa 3.2:** Criar os arquivos de testes unitários (`.test.ts`) definindo a estrutura de contratos de dados (Interfaces) que o motor de cálculo irá receber e retornar.
-- [ ] **Tarefa 3.3:** Mapear e escrever os casos de teste exaustivos no Vitest (cenários de salários isentos, limites exatos de faixas da tabela progressiva, múltiplos dependentes, valores zerados e tratamento de erros de valores negativos). *Nota: Os testes devem falhar inicialmente por falta de implementação lógica.*
-- [ ] **Tarefa 3.4:** Criar o arquivo de workflow do **GitHub Actions** (`.github/workflows/ci.yml`) para automatizar o processo a cada push/PR, executando: Linting, Type Check (`tsc`) e a bateria de testes do Vitest.
+- [x] **Tarefa 3.1:** Instalar e configurar o Vitest (`vitest.config.ts`) integrado ao ambiente TypeScript do Next.js.
+- [x] **Tarefa 3.2:** Criar os arquivos de testes unitários (`.test.ts`) definindo a estrutura de contratos de dados (Interfaces) que o motor de cálculo irá receber e retornar.
+- [x] **Tarefa 3.3:** Mapear e escrever os casos de teste exaustivos no Vitest (cenários de salários isentos, limites exatos de faixas da tabela progressiva, múltiplos dependentes, valores zerados e tratamento de erros de valores negativos). *Nota: No Bloco 4, com o desacoplamento do motor de cálculo, estes casos serão consolidados no motor de estratégia.*
+- [x] **Tarefa 3.4:** Criar o arquivo de workflow do **GitHub Actions** (`.github/workflows/ci.yml`) para automatizar o processo a cada push/PR, executando: Linting, Type Check (`tsc`) e a bateria de testes do Vitest.
 
 ### Bloco 4: Engenharia de Negócio (Lógica & Motor de Cálculo)
 **Objetivo:** Implementar o algoritmo matemático de cálculo do IRRF de forma 100% desacoplada da interface, utilizando padrões de projeto e orientada a testes (TDD).

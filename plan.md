@@ -26,8 +26,8 @@ Este documento serve como o mapa de etapas para o desenvolvimento do IRRF App. O
   - *Etapa 1 (Ganhos):* Inputs para Salário Bruto, Aluguéis e outras fontes.
   - *Etapa 2 (Gastos/Deduções):* Inputs para Previdência Oficial, Dependentes, Pensão Alimentícia, Saúde e Educação.
   - *Etapa 3 (Resultado):* Painel de resposta rápida com gráficos ou resumos visuais.
-- [ ] **Tarefa 2.3:** Implementar componentes de ajuda contextual (**Tooltips** ou **HoverCards** do shadcn/ui) em termos complexos (como "Dedução Legal", "Base de Cálculo", "PGBL/VGBL", "Parcela a Deduzir") para traduzir o "economês" em linguagem acessível.
-- [ ] **Tarefa 2.4:** Desenvolver a tela/painel de resultado visual (exibindo faixas de imposto, alíquota efetiva e o Guia Teórico explicativo de como declarar por conta própria), operando temporariamente com dados estáticos de forma reativa e instantânea (**Foco em UX de Resposta Rápida**).
+- [x] **Tarefa 2.3:** Implementar componentes de ajuda contextual (**Tooltips** ou **HoverCards** do shadcn/ui) em termos complexos (como "Dedução Legal", "Base de Cálculo", "PGBL/VGBL", "Parcela a Deduzir") para traduzir o "economês" em linguagem acessível.
+- [x] **Tarefa 2.4:** Desenvolver a tela/painel de resultado visual (exibindo faixas de imposto, alíquota efetiva e o Guia Teórico explicativo de como declarar por conta própria), operando temporariamente com dados estáticos de forma reativa e instantânea (**Foco em UX de Resposta Rápida**).
 
 ### Bloco 3: Engenharia de Testes & Pipeline de CI
 **Objetivo:** Isolar o ecossistema de testes com Vitest e configurar a esteira de automação do GitHub Actions antes de escrever a lógica matemática.

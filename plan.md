@@ -6,7 +6,7 @@ Este documento serve como o mapa de etapas para o desenvolvimento do IRRF App. O
 - [x] Bloco 1: Inicialização do Ambiente e Design System Base
 - [x] Bloco 2: Engenharia de Interface & Layout (UI/UX)
 - [x] Bloco 3: Engenharia de Testes & Pipeline de CI
-- [ ] Bloco 4: Engenharia de Negócio (Lógica & Motor de Cálculo)
+- [x] Bloco 4: Engenharia de Negócio (Lógica & Motor de Cálculo)
 - [ ] Bloco 5: Conexão Final & Ajustes de Acessibilidade
 
 ---
@@ -38,10 +38,10 @@ Este documento serve como o mapa de etapas para o desenvolvimento do IRRF App. O
 
 ### Bloco 4: Engenharia de Negócio (Lógica & Motor de Cálculo)
 **Objetivo:** Implementar o algoritmo matemático de cálculo do IRRF de forma 100% desacoplada da interface, utilizando padrões de projeto e orientada a testes (TDD).
-- [ ] **Tarefa 4.1:** Desenvolver a interface da estratégia de cálculo utilizando o **Strategy Pattern** (`IRRFCalculationStrategy.ts`).
-- [ ] **Tarefa 4.2:** Implementar as funções puras de cálculo para os regimes tributários necessários (Simplificado vs. Deduções Legais) e faixas do ano-calendário vigente.
-- [ ] **Tarefa 4.3:** Criar a Factory simples para gerenciar a chamada da estratégia correta em tempo de execução.
-- [ ] **Tarefa 4.4:** Rodar localmente o Vitest de forma iterativa até que **100% dos testes unitários passem com sucesso**, cobrindo todos os cenários extremos.
+- [x] **Tarefa 4.1:** Desenvolver a interface da estratégia de cálculo utilizando o **Strategy Pattern** (`IRRFCalculationStrategy.ts`).
+- [x] **Tarefa 4.2:** Implementar as funções puras de cálculo para os regimes tributários necessários (Simplificado vs. Deduções Legais) e faixas do ano-calendário vigente.
+- [x] **Tarefa 4.3:** Criar a Factory simples para gerenciar a chamada da estratégia correta em tempo de execução.
+- [x] **Tarefa 4.4:** Rodar localmente o Vitest de forma iterativa até que **100% dos testes unitários passem com sucesso**, cobrindo todos os cenários extremos.
 
 ### Bloco 5: Conexão Final & Ajustes de Acessibilidade
 **Objetivo:** Acoplar o motor de cálculo à interface do usuário para processamento em tempo real e realizar os refinamentos de produto.

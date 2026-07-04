@@ -7,7 +7,7 @@ Este documento serve como o mapa de etapas para o desenvolvimento do IRRF App. O
 - [x] Bloco 2: Engenharia de Interface & Layout (UI/UX)
 - [x] Bloco 3: Engenharia de Testes & Pipeline de CI
 - [x] Bloco 4: Engenharia de Negócio (Lógica & Motor de Cálculo)
-- [ ] Bloco 5: Conexão Final & Ajustes de Acessibilidade
+- [x] Bloco 5: Conexão Final & Ajustes de Acessibilidade
 
 ---
 
@@ -45,6 +45,6 @@ Este documento serve como o mapa de etapas para o desenvolvimento do IRRF App. O
 
 ### Bloco 5: Conexão Final & Ajustes de Acessibilidade
 **Objetivo:** Acoplar o motor de cálculo à interface do usuário para processamento em tempo real e realizar os refinamentos de produto.
-- [ ] **Tarefa 5.1:** Conectar os formulários do Bloco 2 ao motor de cálculo do Bloco 4, fazendo com que o painel de resultados reaja instantaneamente a cada caractere digitado (Real-time recalculation).
-- [ ] **Tarefa 5.2:** Realizar uma auditoria completa de acessibilidade (a11y) garantindo que as tags HTML sejam semânticas e os leitores de tela interpretem os resultados financeiros perfeitamente.
-- [ ] **Tarefa 5.3:** Simular o fluxo completo de ponta a ponta e disparar o Pull Request final para validar o comportamento da Pipeline de CI e o deploy automático de visualização na Vercel.
+- [x] **Tarefa 5.1:** Conectar os formulários do Bloco 2 ao motor de cálculo do Bloco 4, fazendo com que o painel de resultados reaja instantaneamente a cada caractere digitado (Real-time recalculation).
+- [x] **Tarefa 5.2:** Realizar uma auditoria completa de acessibilidade (a11y) garantindo que as tags HTML sejam semânticas e os leitores de tela interpretem os resultados financeiros perfeitamente.
+- [x] **Tarefa 5.3:** Simular o fluxo completo de ponta a ponta e disparar o Pull Request final para validar o comportamento da Pipeline de CI e o deploy automático de visualização na Vercel.

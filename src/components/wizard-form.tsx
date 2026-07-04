@@ -16,6 +16,7 @@ import {
 } from "@/components/ui/card";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
 import { Coins, PiggyBank, Receipt, ArrowLeft, ArrowRight, RotateCcw, Info } from "lucide-react";
+import { calcularIRRF } from "@/lib/irrf-calculator";
 
 type Step = 1 | 2 | 3;
 
@@ -30,16 +31,6 @@ export default function WizardForm() {
   } = useForm<IRRFFormData>({
     resolver: zodResolver(irrfFormSchema) as import("react-hook-form").Resolver<IRRFFormData>,
     mode: "onChange",
-    defaultValues: {
-      salarioBruto: 0,
-      alugueis: 0,
-      outrosGanhos: 0,
-      previdenciaOficial: 0,
-      dependentes: 0,
-      pensaoAlimenticia: 0,
-      saude: 0,
-      educacao: 0,
-    },
   });
 
   const formData = useWatch({ control });
@@ -61,21 +52,25 @@ export default function WizardForm() {
     setStep(1);
   };
 
-  // Cálculo fictício simples (apenas mockado) para ilustrar na Etapa 3
-  const totalGanhos =
-    Number(formData.salarioBruto || 0) +
-    Number(formData.alugueis || 0) +
-    Number(formData.outrosGanhos || 0);
+  const result = calcularIRRF({
+    salarioBruto: Number(formData.salarioBruto || 0),
+    alugueis: Number(formData.alugueis || 0),
+    outrosGanhos: Number(formData.outrosGanhos || 0),
+    previdenciaOficial: Number(formData.previdenciaOficial || 0),
+    dependentes: Number(formData.dependentes || 0),
+    pensaoAlimenticia: Number(formData.pensaoAlimenticia || 0),
+    saude: Number(formData.saude || 0),
+    educacao: Number(formData.educacao || 0),
+  });
 
-  const totalDeducoes =
-    Number(formData.previdenciaOficial || 0) +
-    Number(formData.dependentes || 0) * 189.59 + // dedução padrão por dependente fictícia/real
-    Number(formData.pensaoAlimenticia || 0) +
-    Number(formData.saude || 0) +
-    Number(formData.educacao || 0);
-
-  const baseCalculoFicticia = Math.max(0, totalGanhos - totalDeducoes);
-  const impostoFicticio = baseCalculoFicticia * 0.15; // taxa fictícia de 15% para o mockup do Bloco 2
+  const {
+    rendimentoTributavelTotal,
+    totalDeducoes,
+    baseDeCalculo,
+    impostoDevido,
+    aliquotaEfetiva,
+    tipoCalculoAplicado,
+  } = result;
 
   return (
     <div className="w-full max-w-2xl mx-auto space-y-6">
@@ -435,10 +430,10 @@ export default function WizardForm() {
             <CardHeader className="space-y-1">
               <div className="flex items-center gap-2 text-emerald-600">
                 <Receipt className="w-5 h-5" />
-                <CardTitle className="text-xl">Etapa 3: Resultado Estimado (Mockup)</CardTitle>
+                <CardTitle className="text-xl">Etapa 3: Seu Resultado Estimado</CardTitle>
               </div>
               <CardDescription className="text-emerald-800">
-                Esta tela exibe resultados preliminares calculados de forma simplificada e fictícia para esta etapa de design.
+                Aqui está o resumo da sua simulação do IRRF, baseado nos dados que você informou.
               </CardDescription>
             </CardHeader>
             <CardContent className="space-y-6">
@@ -446,7 +441,7 @@ export default function WizardForm() {
                 <div className="bg-white p-4 rounded-xl border border-slate-200 shadow-sm text-center">
                   <p className="text-xs font-semibold uppercase tracking-wider text-slate-500">Rendimento Total</p>
                   <p className="text-2xl font-bold text-slate-800 mt-1">
-                    R$ {totalGanhos.toLocaleString("pt-BR", { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
+                    R$ {rendimentoTributavelTotal.toLocaleString("pt-BR", { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
                   </p>
                 </div>
                 <div className="bg-white p-4 rounded-xl border border-slate-200 shadow-sm text-center">
@@ -458,7 +453,7 @@ export default function WizardForm() {
                 <div className="bg-emerald-600 p-4 rounded-xl shadow-sm text-center text-white">
                   <p className="text-xs font-semibold uppercase tracking-wider opacity-90">Imposto Estimado</p>
                   <p className="text-2xl font-bold mt-1">
-                    R$ {impostoFicticio.toLocaleString("pt-BR", { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
+                    R$ {impostoDevido.toLocaleString("pt-BR", { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
                   </p>
                 </div>
               </div>
@@ -467,19 +462,25 @@ export default function WizardForm() {
                 <h3 className="font-semibold text-slate-800 text-sm">Resumo da Simulação</h3>
                 <div className="space-y-2 text-sm text-slate-600">
                   <div className="flex justify-between border-b border-dashed border-slate-100 pb-1">
-                    <span>Base de Cálculo Estimada:</span>
+                    <span>Base de Cálculo:</span>
                     <span className="font-medium text-slate-800">
-                      R$ {baseCalculoFicticia.toLocaleString("pt-BR", { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
+                      R$ {baseDeCalculo.toLocaleString("pt-BR", { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
                     </span>
                   </div>
                   <div className="flex justify-between border-b border-dashed border-slate-100 pb-1">
-                    <span>Alíquota de Referência (Fictícia):</span>
-                    <span className="font-medium text-slate-800">15.00%</span>
+                    <span>Alíquota Efetiva:</span>
+                    <span className="font-medium text-slate-800">
+                      {aliquotaEfetiva.toLocaleString("pt-BR", { style: "percent", minimumFractionDigits: 2, maximumFractionDigits: 2 })}
+                    </span>
+                  </div>
+                  <div className="flex justify-between border-b border-dashed border-slate-100 pb-1">
+                    <span>Tipo de Cálculo Aplicado:</span>
+                    <span className="font-medium text-slate-800">{tipoCalculoAplicado}</span>
                   </div>
                   <div className="flex justify-between pb-1">
-                    <span>Imposto Devido Estimado:</span>
+                    <span>Imposto Devido:</span>
                     <span className="font-bold text-emerald-600">
-                      R$ {impostoFicticio.toLocaleString("pt-BR", { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
+                      R$ {impostoDevido.toLocaleString("pt-BR", { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
                     </span>
                   </div>
                 </div>
@@ -490,7 +491,7 @@ export default function WizardForm() {
                 <h3 className="font-semibold text-slate-800 flex items-center gap-2">
                   <Info className="w-4 h-4 text-blue-600" /> Guia Teórico: Entenda Seu IRRF
                 </h3>
-                <p className="text-xs text-slate-500">Este guia é um mockup e será preenchido com conteúdo real nas próximas etapas.</p>
+                {/*<p className="text-xs text-slate-500">Este guia é um mockup e será preenchido com conteúdo real nas próximas etapas.</p>*/}
                 <ul className="list-disc list-inside space-y-1 pl-2">
                   <li>
                     <strong>Rendimento Total:</strong> Soma de todas as suas fontes de receita tributáveis.

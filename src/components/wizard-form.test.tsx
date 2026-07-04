@@ -82,15 +82,18 @@ describe("WizardForm Component", () => {
     
     fireEvent.click(avancarBtn2);
     
-    // Etapa 3 -> Verificar resultado mockado e reiniciar
+    // Etapa 3 -> Verificar resultado e reiniciar
     await waitFor(() => {
-      expect(screen.getByText("Etapa 3: Resultado Estimado (Mockup)")).toBeInTheDocument();
+      expect(screen.getByText("Etapa 3: Seu Resultado Estimado")).toBeInTheDocument();
     });
     
-    // Rendimento total: 5000, Deduções totais: 500, Base cálculo: 4500, Imposto estimado (15%): 675
+    // Rendimento total: 5000, Deduções totais (simplificada): 564.80, Base cálculo: 4435.20, Imposto Devido: 335.02
     expect(screen.getByText("R$ 5.000,00")).toBeInTheDocument();
-    expect(screen.getByText("R$ 500,00")).toBeInTheDocument();
-    expect(screen.getAllByText("R$ 675,00").length).toBeGreaterThan(0);
+    expect(screen.getByText("R$ 564,80")).toBeInTheDocument();
+    expect(screen.getAllByText("R$ 335,02").length).toBeGreaterThan(0);
+    expect(screen.getByText("R$ 4.435,20")).toBeInTheDocument(); // Base de Cálculo
+    expect(screen.getByText("6,70%")).toBeInTheDocument(); // Alíquota Efetiva
+    expect(screen.getByText("simplificado")).toBeInTheDocument(); // Tipo de Cálculo Aplicado
     
     // Testar recomeçar simulação
     const recomecarBtn = screen.getByRole("button", { name: /Recomeçar Simulação/i });

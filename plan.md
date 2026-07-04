@@ -48,3 +48,7 @@ Este documento serve como o mapa de etapas para o desenvolvimento do IRRF App. O
 - [x] **Tarefa 5.1:** Conectar os formulários do Bloco 2 ao motor de cálculo do Bloco 4, fazendo com que o painel de resultados reaja instantaneamente a cada caractere digitado (Real-time recalculation).
 - [x] **Tarefa 5.2:** Realizar uma auditoria completa de acessibilidade (a11y) garantindo que as tags HTML sejam semânticas e os leitores de tela interpretem os resultados financeiros perfeitamente.
 - [x] **Tarefa 5.3:** Simular o fluxo completo de ponta a ponta e disparar o Pull Request final para validar o comportamento da Pipeline de CI e o deploy automático de visualização na Vercel.
+
+### Bloco 6: Guia Prático e Textos Educativos
+**Objetivo:** Guiar o usuário para que o mesmo possa efetuar o pagamento do seu imposto de forma independente.
+- [ ] Implementar card informativo dinâmico na Etapa 3 (Painel de Resultados) ensinando o usuário a emitir o DARF e pagar via PIX/Bancos de forma independente (exibir apenas se o imposto devido for maior que zero).

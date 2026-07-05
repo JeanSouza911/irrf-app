@@ -235,9 +235,9 @@ export default function WizardForm() {
                 </div>
               </div>
             </CardContent>
-            <CardFooter className="flex justify-end pt-4 border-t border-slate-100">
-              <Button type="button" onClick={handleNextStep} disabled={!isValid} className="gap-2">
-                Avançar para Deduções <ArrowRight className="w-4 h-4" />
+            <CardFooter className="flex flex-col sm:flex-row sm:justify-end pt-4 border-t border-slate-100">
+              <Button type="button" onClick={handleNextStep} disabled={!isValid} className="w-full sm:w-auto gap-2">
+              Avançar para Deduções <ArrowRight className="w-4 h-4" />
               </Button>
             </CardFooter>
           </Card>
@@ -414,12 +414,12 @@ export default function WizardForm() {
                 </div>
               </div>
             </CardContent>
-            <CardFooter className="flex justify-between pt-4 border-t border-slate-100">
-              <Button type="button" variant="outline" onClick={handlePrevStep} className="gap-2">
-                <ArrowLeft className="w-4 h-4" /> Voltar para Ganhos
+            <CardFooter className="flex flex-col-reverse sm:flex-row sm:justify-between gap-3 pt-4 border-t border-slate-100">
+              <Button type="button" variant="outline" onClick={handlePrevStep} className="w-full sm:w-auto gap-2">
+              <ArrowLeft className="w-4 h-4" /> Voltar para Ganhos
               </Button>
-              <Button type="button" onClick={handleNextStep} disabled={!isValid} className="gap-2">
-                Ver Resultado <ArrowRight className="w-4 h-4" />
+              <Button type="button" onClick={handleNextStep} disabled={!isValid} className="w-full sm:w-auto gap-2">
+               Ver Resultado <ArrowRight className="w-4 h-4" />
               </Button>
             </CardFooter>
           </Card>
@@ -560,12 +560,12 @@ export default function WizardForm() {
                 </div>
               </div>
             </CardContent>
-            <CardFooter className="flex justify-between pt-4 border-t border-slate-100 bg-white rounded-b-xl">
-              <Button type="button" variant="outline" onClick={handlePrevStep} className="gap-2">
-                <ArrowLeft className="w-4 h-4" /> Ajustar Deduções
+            <CardFooter className="flex flex-col-reverse sm:flex-row sm:justify-between gap-3 pt-4 border-t border-slate-100 bg-white rounded-b-xl">
+              <Button type="button" variant="outline" onClick={handlePrevStep} className="w-full sm:w-auto gap-2">
+              <ArrowLeft className="w-4 h-4" /> Ajustar Deduções
               </Button>
-              <Button type="button" onClick={handleReset} variant="destructive" className="gap-2">
-                <RotateCcw className="w-4 h-4" /> Recomeçar Simulação
+              <Button type="button" onClick={handleReset} variant="destructive" className="w-full sm:w-auto gap-2">
+              <RotateCcw className="w-4 h-4" /> Recomeçar Simulação
               </Button>
             </CardFooter>
           </Card>

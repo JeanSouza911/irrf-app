@@ -486,29 +486,78 @@ export default function WizardForm() {
                 </div>
               </div>
 
-              {/* Guia Teórico Explicativo - Mockup */}
-              <div className="p-4 bg-white rounded-xl border border-slate-200 shadow-sm space-y-3 text-sm text-slate-700">
-                <h3 className="font-semibold text-slate-800 flex items-center gap-2">
-                  <Info className="w-4 h-4 text-blue-600" /> Guia Teórico: Entenda Seu IRRF
+              {/* Card de Pagamento Independente ou Isenção */}
+              {impostoDevido > 0 ? (
+                <div className="p-5 bg-white rounded-xl border border-slate-200 shadow-sm space-y-4">
+                  <h3 className="font-semibold text-slate-800 text-base flex items-center gap-2">
+                    <Coins className="w-5 h-5 text-blue-600" /> Como efetuar o seu pagamento de forma independente
+                  </h3>
+                  <p className="text-sm text-slate-600 leading-relaxed">
+                    Como você possui imposto estimado a pagar, você pode realizar o pagamento de forma autônoma e segura. Veja o passo a passo de como proceder:
+                  </p>
+                  <ul className="space-y-3 text-sm text-slate-600 pl-1">
+                    <li className="flex gap-2">
+                      <span className="font-bold text-blue-600">1.</span>
+                      <span>
+                        <strong>Emissão do DARF:</strong> Acesse o portal <strong>e-CAC</strong> (Centro Virtual de Atendimento da Receita Federal) ou utilize o programa oficial do IRPF para gerar o Documento de Arrecadação de Receitas Federais (DARF).
+                      </span>
+                    </li>
+                    <li className="flex gap-2">
+                      <span className="font-bold text-blue-600">2.</span>
+                      <span>
+                        <strong>Opções de Parcelamento:</strong> Se preferir, você pode parcelar o imposto devido em <strong>até 8 cotas mensais</strong> (com valor mínimo por cota estipulado pela Receita). Há também a opção de colocar a cota única ou as demais parcelas em débito automático para sua comodidade.
+                      </span>
+                    </li>
+                    <li className="flex gap-2">
+                      <span className="font-bold text-blue-600">3.</span>
+                      <span>
+                        <strong>Pagamento Descomplicado:</strong> Realize o pagamento de forma instantânea utilizando o <strong>QR Code Pix</strong> impresso no próprio DARF, ou utilize o código de barras diretamente no aplicativo do seu banco preferido.
+                      </span>
+                    </li>
+                  </ul>
+                </div>
+              ) : (
+                <div className="p-4 bg-slate-50 rounded-xl border border-slate-200 shadow-sm">
+                  <p className="text-sm font-medium text-slate-700 flex items-center gap-2">
+                    <span className="font-semibold text-slate-800">Você está livre do Leão! 🦁</span> Nenhuma ação de pagamento é necessária para este cálculo.
+                  </p>
+                </div>
+              )}
+
+              {/* Guia Prático Educativo Real */}
+              <div className="p-5 bg-white rounded-xl border border-slate-200 shadow-sm space-y-4">
+                <h3 className="font-semibold text-slate-800 text-base flex items-center gap-2">
+                  <Info className="w-5 h-5 text-blue-600" /> Guia Prático Educativo: Entenda o seu Imposto
                 </h3>
-                {/*<p className="text-xs text-slate-500">Este guia é um mockup e será preenchido com conteúdo real nas próximas etapas.</p>*/}
-                <ul className="list-disc list-inside space-y-1 pl-2">
-                  <li>
-                    <strong>Rendimento Total:</strong> Soma de todas as suas fontes de receita tributáveis.
-                  </li>
-                  <li>
-                    <strong>Deduções Legais:</strong> Gastos que a Receita Federal permite abater para diminuir a base de cálculo do imposto.
-                  </li>
-                  <li>
-                    <strong>Base de Cálculo:</strong> É o valor sobre o qual o imposto é efetivamente calculado, após as deduções.
-                  </li>
-                  <li>
-                    <strong>Alíquota Efetiva:</strong> A porcentagem real de imposto que você paga sobre o seu rendimento total, considerando as faixas e deduções.
-                  </li>
-                  <li>
-                    <strong>Faixas de Imposto:</strong> As tabelas progressivas da Receita Federal que definem diferentes alíquotas de imposto para diferentes níveis de renda.
-                  </li>
-                </ul>
+                <p className="text-sm text-slate-600 leading-relaxed">
+                  Para ajudá-lo a compreender exatamente como o seu imposto foi calculado de forma 100% autônoma, detalhamos o significado de cada linha do cálculo abaixo:
+                </p>
+                <div className="space-y-4 pt-1">
+                  <div className="space-y-1">
+                    <h4 className="text-sm font-bold text-slate-800">1. Rendimento Total</h4>
+                    <p className="text-sm text-slate-600 leading-relaxed">
+                      É a soma de todas as suas receitas tributáveis informadas (salários, aluguéis recebidos, pró-labore e outros ganhos). Representa o ponto de partida do cálculo, antes de qualquer desconto.
+                    </p>
+                  </div>
+                  <div className="space-y-1">
+                    <h4 className="text-sm font-bold text-slate-800">2. Deduções Legais</h4>
+                    <p className="text-sm text-slate-600 leading-relaxed">
+                      São despesas previstas por lei (como previdência oficial, dependentes, pensão alimentícia, gastos com saúde e educação) que a Receita Federal permite abater diretamente do seu rendimento total para diminuir o montante sobre o qual o imposto será calculado. No modelo simplificado, esse abatimento é substituído por um desconto padrão fixo (atualmente de 20% dos rendimentos, limitado a um teto).
+                    </p>
+                  </div>
+                  <div className="space-y-1">
+                    <h4 className="text-sm font-bold text-slate-800">3. Base de Cálculo</h4>
+                    <p className="text-sm text-slate-600 leading-relaxed">
+                      É o valor líquido real obtido subtraindo-se as Deduções Legais (ou o desconto simplificado) do Rendimento Total. É sobre esse montante que as alíquotas da tabela progressiva mensal ou anual da Receita Federal serão aplicadas para definir a sua faixa de imposto.
+                    </p>
+                  </div>
+                  <div className="space-y-1">
+                    <h4 className="text-sm font-bold text-slate-800">4. Alíquota Efetiva</h4>
+                    <p className="text-sm text-slate-600 leading-relaxed">
+                      É a porcentagem real e definitiva de imposto descontada do seu rendimento. Diferente da alíquota nominal de cada faixa (que pode chegar a 27,5%), a alíquota efetiva mostra o impacto real no seu bolso, dividindo o Imposto Estimado pelo Rendimento Total.
+                    </p>
+                  </div>
+                </div>
               </div>
             </CardContent>
             <CardFooter className="flex justify-between pt-4 border-t border-slate-100 bg-white rounded-b-xl">

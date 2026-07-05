@@ -8,6 +8,7 @@ Este documento serve como o mapa de etapas para o desenvolvimento do IRRF App. O
 - [x] Bloco 3: Engenharia de Testes & Pipeline de CI
 - [x] Bloco 4: Engenharia de Negócio (Lógica & Motor de Cálculo)
 - [x] Bloco 5: Conexão Final & Ajustes de Acessibilidade
+- [x] Bloco 6: Guia Prático, Textos Educativos e Pagamento Independente
 
 ---
 
@@ -49,6 +50,6 @@ Este documento serve como o mapa de etapas para o desenvolvimento do IRRF App. O
 - [x] **Tarefa 5.2:** Realizar uma auditoria completa de acessibilidade (a11y) garantindo que as tags HTML sejam semânticas e os leitores de tela interpretem os resultados financeiros perfeitamente.
 - [x] **Tarefa 5.3:** Simular o fluxo completo de ponta a ponta e disparar o Pull Request final para validar o comportamento da Pipeline de CI e o deploy automático de visualização na Vercel.
 
-### Bloco 6: Guia Prático e Textos Educativos
+### Bloco 6: Guia Prático, Textos Educativos e Pagamento Independente
 **Objetivo:** Guiar o usuário para que o mesmo possa efetuar o pagamento do seu imposto de forma independente.
-- [ ] Implementar card informativo dinâmico na Etapa 3 (Painel de Resultados) ensinando o usuário a emitir o DARF e pagar via PIX/Bancos de forma independente (exibir apenas se o imposto devido for maior que zero).
+- [x] Implementar card informativo dinâmico na Etapa 3 (Painel de Resultados) ensinando o usuário a emitir o DARF e pagar via PIX/Bancos de forma independente (exibir apenas se o imposto devido for maior que zero).

@@ -7,9 +7,64 @@ import { cn } from "@/lib/utils"
 
 const TooltipProvider = TooltipPrimitive.Provider
 
-const Tooltip = TooltipPrimitive.Root
+const TooltipContext = React.createContext<{
+  open: boolean
+  setOpen: React.Dispatch<React.SetStateAction<boolean>>
+} | null>(null)
 
-const TooltipTrigger = TooltipPrimitive.Trigger
+const Tooltip = ({
+  children,
+  ...props
+}: React.ComponentPropsWithoutRef<typeof TooltipPrimitive.Root>) => {
+  const [open, setOpen] = React.useState(false)
+
+  return (
+    <TooltipContext.Provider value={{ open, setOpen }}>
+      <TooltipPrimitive.Root
+        open={open}
+        onOpenChange={setOpen}
+        {...props}
+      >
+        {children}
+      </TooltipPrimitive.Root>
+    </TooltipContext.Provider>
+  )
+}
+
+const TooltipTrigger = React.forwardRef<
+  React.ElementRef<typeof TooltipPrimitive.Trigger>,
+  React.ComponentPropsWithoutRef<typeof TooltipPrimitive.Trigger>
+>(({ onClick, onPointerDown, ...props }, ref) => {
+  const context = React.useContext(TooltipContext)
+
+  if (!context) {
+    return <TooltipPrimitive.Trigger ref={ref} {...props} />
+  }
+
+  const { setOpen } = context
+
+  return (
+    <TooltipPrimitive.Trigger
+      ref={ref}
+      {...props}
+      onPointerDown={(e) => {
+        if (e.pointerType === "touch") {
+          e.preventDefault()
+          setOpen((prev) => !prev)
+        }
+        onPointerDown?.(e)
+      }}
+      onClick={(e) => {
+        if ("pointerType" in e.nativeEvent && e.nativeEvent.pointerType === "touch") {
+          e.preventDefault()
+        } else {
+          onClick?.(e)
+        }
+      }}
+    />
+  )
+})
+TooltipTrigger.displayName = TooltipPrimitive.Trigger.displayName
 
 const TooltipContent = React.forwardRef<
   React.ElementRef<typeof TooltipPrimitive.Content>,
